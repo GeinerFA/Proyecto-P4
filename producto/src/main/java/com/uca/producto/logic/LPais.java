@@ -74,7 +74,7 @@ public class LPais {
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
         
         parametros.add(new TParametro<>("p_nombre", pais.getNombre(), Types.VARCHAR));
-        //Cambio codigoPais
+        //Cambio codigoPais.fff
         parametros.add(new TParametro<>("p_codigo_pais", pais.getCodigoPais(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
