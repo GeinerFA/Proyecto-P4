@@ -9,7 +9,9 @@ public class Alojamiento {
     private Date fecha_salida;
     private int precio;
     private String ubicacion;
-    private char estado;
+    private boolean estado;
+    private int idDestino;
+    private int idPais;
 
     public int getidAlojamiento() {
         return idAlojamiento;
@@ -67,11 +69,11 @@ public class Alojamiento {
         this.ubicacion = ubicacion;
     }
 
-    public char getestado() {
+    public boolean getestado() {
         return estado;
     }
 
-    public void setestado(char estado) {
+    public void setestado(boolean estado) {
         this.estado = estado;
     }
 
@@ -82,7 +84,23 @@ public class Alojamiento {
         this.idAlojamiento = idAlojamiento;
     }
 
-    public Alojamiento(int idAlojamiento, String nombre, int cantidadPersonas, Date fecha_ingreso, Date fecha_salida, int precio, String ubicacion,char estado) {
+    public int getidDestino() {
+        return idDestino;
+    }
+
+    public void setidDestino(int idDestino) {
+        this.idDestino = idDestino;
+    }
+
+    public int getidPais() {
+        return idPais;
+    }
+
+    public void setidPais(int idPais) {
+        this.idPais = idPais;
+    }
+
+    public Alojamiento(int idAlojamiento, String nombre, int cantidadPersonas, Date fecha_ingreso, Date fecha_salida, int precio, String ubicacion,boolean estado, int idDestino, int idPais) {
         this.idAlojamiento = idAlojamiento;
         this.nombre = nombre;
         this.cantidadPersonas = cantidadPersonas;
@@ -91,5 +109,7 @@ public class Alojamiento {
         this.precio = precio;
         this.ubicacion = ubicacion;
         this.estado = estado;
+        this.idDestino = idDestino;
+        this.idPais = idPais;
     }
 }
