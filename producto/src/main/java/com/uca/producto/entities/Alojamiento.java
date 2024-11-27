@@ -1,6 +1,5 @@
 package com.uca.producto.entities;
 import java.util.Date;
- 
 
 public class Alojamiento {
     private int idAlojamiento;
@@ -11,7 +10,6 @@ public class Alojamiento {
     private int precio;
     private String ubicacion;
     private char estado;
-    
 
     public int getidAlojamiento() {
         return idAlojamiento;
@@ -93,7 +91,5 @@ public class Alojamiento {
         this.precio = precio;
         this.ubicacion = ubicacion;
         this.estado = estado;
-        
-
     }
 }
