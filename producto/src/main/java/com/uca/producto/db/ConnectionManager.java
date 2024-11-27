@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-//PRUEBA 1
+
 public class ConnectionManager implements IConnectionManager, AutoCloseable {
     private Connection connection;
 
