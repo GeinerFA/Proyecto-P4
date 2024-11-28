@@ -30,3 +30,4 @@ public class PaisController {
         return new LPais().Actualizar(pais);
     }
 }
+//potoy gay
