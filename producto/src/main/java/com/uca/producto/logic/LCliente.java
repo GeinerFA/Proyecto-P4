@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 public class LCliente {
     public ArrayList<Cliente> Listar() {
-        ArrayList<Cliente> Clientes = new ArrayList<>();
+        ArrayList<Cliente> clientes = new ArrayList<>();
 
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
@@ -21,7 +21,7 @@ public class LCliente {
             if (cm.Connect()) {
                 try (ResultSet rs = cm.Execute("proyecto.operaciones.sp_op_listar_cliente(?)", parametros)) {
                     while (rs.next()) {
-                        Clientes.add(new Cliente(
+                        clientes.add(new Cliente(
                                 rs.getInt("id_cliente"),
                                 rs.getString("nombre"),
                                 rs.getString("apellido"),
@@ -37,7 +37,7 @@ public class LCliente {
 
                 }
             }
-            return Clientes;
+            return clientes;
         } catch (Exception ex) {
             Logger.getLogger(LCliente.class.getName()).log(Level.SEVERE, null, ex);
             return null;
