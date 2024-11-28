@@ -30,3 +30,4 @@ public class AlojamientoController {
         return new LAlojamiento().Actualizar(Alojamiento);
     }
 }
+//hola 222
