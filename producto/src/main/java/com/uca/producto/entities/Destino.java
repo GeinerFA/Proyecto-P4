@@ -13,8 +13,8 @@ public class Destino {
         return idDestino;
     }
 
-    public void setidAlojamiento(int idAlojamiento) {
-        this.idDestino = idAlojamiento;
+    public void setidDestino(int idDestino) {
+        this.idDestino = idDestino;
     }
 
     public String getnombre() {
@@ -44,8 +44,8 @@ public class Destino {
     public Destino() {
     }
 
-    public Destino(int idAlojamiento) {
-        this.idDestino = idAlojamiento;
+    public Destino(int idDestino) {
+        this.idDestino = idDestino;
     }
 
     public int getidPais() {
