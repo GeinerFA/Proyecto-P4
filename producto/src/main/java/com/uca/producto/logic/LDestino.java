@@ -13,7 +13,6 @@ import com.uca.producto.entities.Destino;
 public class LDestino {
     public ArrayList<Destino> Listar() {
         ArrayList<Destino> destinos = new ArrayList<>();
-
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
         parametros.add(new TParametro<>("p_respuesta", null, Types.REF_CURSOR, true));
