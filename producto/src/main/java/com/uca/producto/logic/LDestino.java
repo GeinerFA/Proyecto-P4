@@ -13,6 +13,7 @@ import com.uca.producto.entities.Destino;
 public class LDestino {
     public ArrayList<Destino> Listar() {
         ArrayList<Destino> destinos = new ArrayList<>();
+
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
         parametros.add(new TParametro<>("p_respuesta", null, Types.REF_CURSOR, true));
@@ -22,11 +23,11 @@ public class LDestino {
                 try (ResultSet rs = cm.Execute("proyecto.operaciones.sp_op_listar_destino(?)", parametros)) {
                     while (rs.next()) {
                         destinos.add(new Destino(
-                                rs.getInt("idDestino"),
+                                rs.getInt("id_Destino"),
                                 rs.getString("nombre"),
                                 rs.getClob("descripcion"),
                                 rs.getBoolean("estado"),
-                                rs.getInt("idPais")
+                                rs.getInt("id_Pais")
                         ));
                     }
                 }
@@ -43,11 +44,11 @@ public class LDestino {
         }
     }
 
-    public Destino Consultar(int idDestino) {
+    public Destino Consultar(int id_Destino) {
         Destino destino = null;
 
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
-        parametros.add(new TParametro<>("p_id_destino", idDestino, Types.NUMERIC));
+        parametros.add(new TParametro<>("p_id_destino", id_Destino, Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.REF_CURSOR, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
@@ -56,11 +57,11 @@ public class LDestino {
                     if (rs.next()) {
                         // Cargamos la información del destino
                         destino = new Destino(
-                                rs.getInt("idDestino"),
+                                rs.getInt("id_Destino"),
                                 rs.getString("nombre"),
                                 rs.getClob("descripcion"),
                                 rs.getBoolean("estado"),
-                                rs.getInt("idPais")
+                                rs.getInt("id_Pais")
                         );
 
                     }
@@ -78,9 +79,9 @@ public class LDestino {
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
         
         parametros.add(new TParametro<>("nombre", destino.getnombre(), Types.VARCHAR));
-        parametros.add(new TParametro<>("descripcion", destino.getidDestino(), Types.VARCHAR));
+        parametros.add(new TParametro<>("descripcion", destino.getid_Destino(), Types.VARCHAR));
         parametros.add(new TParametro<>("estado", destino.getestado(), Types.VARCHAR));
-        parametros.add(new TParametro<>("idPais", destino.getidDestino(), Types.VARCHAR));
+        parametros.add(new TParametro<>("id_Pais", destino.getid_Pais(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
@@ -98,9 +99,9 @@ public class LDestino {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
         parametros.add(new TParametro<>("nombre", destino.getnombre(), Types.VARCHAR));
-        parametros.add(new TParametro<>("descripcion", destino.getidDestino(), Types.VARCHAR));
+        parametros.add(new TParametro<>("descripcion", destino.getid_Destino(), Types.VARCHAR));
         parametros.add(new TParametro<>("estado", destino.getestado(), Types.VARCHAR));
-        parametros.add(new TParametro<>("idPais", destino.getidDestino(), Types.VARCHAR));
+        parametros.add(new TParametro<>("id_Pais", destino.getid_Pais(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {

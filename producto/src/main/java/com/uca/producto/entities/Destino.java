@@ -3,18 +3,18 @@ package com.uca.producto.entities;
 import java.sql.Clob;
 
 public class Destino {
-    private int idDestino;
+    private int id_Destino;
     private String nombre;
     private Clob descripcion;
     private boolean estado;
-    private int idPais;
+    private int id_Pais;
 
-    public int getidDestino() {
-        return idDestino;
+    public int getid_Destino() {
+        return id_Destino;
     }
 
-    public void setidDestino(int idDestino) {
-        this.idDestino = idDestino;
+    public void setid_Destino(int id_Destino) {
+        this.id_Destino = id_Destino;
     }
 
     public String getnombre() {
@@ -44,23 +44,23 @@ public class Destino {
     public Destino() {
     }
 
-    public Destino(int idDestino) {
-        this.idDestino = idDestino;
+    public Destino(int id_Destino) {
+        this.id_Destino = id_Destino;
     }
 
-    public int getidPais() {
-        return idPais;
+    public int getid_Pais() {
+        return id_Pais;
     }
 
     public void setidPais(int idPais) {
-        this.idPais = idPais;
+        this.id_Pais = idPais;
     }
 
-    public Destino(int idDestino, String nombre, Clob descripcion, boolean estado , int idPais) {
-        this.idDestino = idDestino;
+    public Destino(int id_Destino, String nombre, Clob descripcion, boolean estado , int idPais) {
+        this.id_Destino = id_Destino;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.estado = estado;
-        this.idPais = idPais;
+        this.id_Pais = idPais;
     }
 }
