@@ -1,6 +1,5 @@
 
 package com.uca.producto.entities;
-import java.sql.Clob;
 
 public class Destino {
     private int id_Destino;
@@ -52,15 +51,15 @@ public class Destino {
         return id_Pais;
     }
 
-    public void setidPais(int idPais) {
-        this.id_Pais = idPais;
+    public void setidPais(int id_Pais) {
+        this.id_Pais = id_Pais;
     }
 
-    public Destino(int id_Destino, String nombre, String descripcion, boolean estado , int idPais) {
+    public Destino(int id_Destino, String nombre, String descripcion, boolean estado , int id_Pais) {
         this.id_Destino = id_Destino;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.estado = estado;
-        this.id_Pais = idPais;
+        this.id_Pais = id_Pais;
     }
 }
