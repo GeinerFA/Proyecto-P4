@@ -1,4 +1,5 @@
 package com.uca.producto.logic;
+ 
 import com.uca.producto.db.ConnectionManager;
 import com.uca.producto.db.TParametro;
 import com.uca.producto.entities.Cliente;
@@ -7,15 +8,15 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-//prueba main
+ 
 public class LCliente {
     public ArrayList<Cliente> Listar() {
         ArrayList<Cliente> Clientes = new ArrayList<>();
-
+ 
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
         parametros.add(new TParametro<>("p_respuesta", null, Types.REF_CURSOR, true));
-
+ 
         try (ConnectionManager cm = new ConnectionManager()) {
             if (cm.Connect()) {
                 try (ResultSet rs = cm.Execute("proyecto.operaciones.sp_op_listar_cliente(?)", parametros)) {
@@ -27,12 +28,13 @@ public class LCliente {
                                 rs.getString("pasaporte"),
                                 rs.getString("nacionalidad"),
                                 rs.getString("correo"),
-                                rs.getString("telefono")));
+                                rs.getString("telefono"),
+                                rs.getBoolean("estado")));
                     }
                 } catch (Exception ex) {
                     Logger.getLogger(LCliente.class.getName()).log(Level.SEVERE, null, ex);
                     return null;
-
+ 
                 }
             }
             return Clientes;
@@ -41,14 +43,14 @@ public class LCliente {
             return null;
         }
     }
-
+ 
     public Cliente Consultar(int idCliente) {
         Cliente Cliente = null;
-
+ 
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
         parametros.add(new TParametro<>("p_id_cliente", idCliente, Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.REF_CURSOR, true));
-
+ 
         try (ConnectionManager cm = new ConnectionManager()) {
             if (cm.Connect()) {
                 try (ResultSet rs = cm.Execute("proyecto.operaciones.sp_op_consultar_cliente(?,?)", parametros)) {
@@ -61,8 +63,9 @@ public class LCliente {
                                 rs.getString("pasaporte"),
                                 rs.getString("nacionalidad"),
                                 rs.getString("correo"),
-                                rs.getString("telefono"));
-
+                                rs.getString("telefono"),
+                                rs.getBoolean("estado"));
+ 
                     }
                 }
             }
@@ -72,11 +75,11 @@ public class LCliente {
             return null;
         }
     }
-
+ 
     public int Guardar(Cliente Cliente) {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
-            
+ 
         parametros.add(new TParametro<>("p_nombre", Cliente.getNombre(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_apellido", Cliente.getApellido(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_pasaporte", Cliente.getPasaporte(), Types.VARCHAR));
@@ -84,9 +87,8 @@ public class LCliente {
         parametros.add(new TParametro<>("p_correo", Cliente.getCorreo(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_telefono", Cliente.getTelefono(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_estado", Cliente.getEstado() ? 1 : 0, Types.INTEGER));
-
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
-
+ 
         try (ConnectionManager cm = new ConnectionManager()) {
             if (cm.Connect()) {
                 return cm.Execute("proyecto.operaciones.sp_op_guardar_cliente(?,?,?,?,?,?,?,?)", parametros);
@@ -97,7 +99,7 @@ public class LCliente {
             return -1;
         }
     }
-
+ 
     public int Actualizar(Cliente Cliente) {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
@@ -109,9 +111,8 @@ public class LCliente {
         parametros.add(new TParametro<>("p_correo", Cliente.getCorreo(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_telefono", Cliente.getTelefono(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_estado", Cliente.getEstado() ? 1 : 0, Types.INTEGER));
-
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
-
+ 
         try (ConnectionManager cm = new ConnectionManager()) {
             if (cm.Connect()) {
                 return cm.Execute("proyecto.operaciones.sp_op_actualizar_cliente(?,?,?,?,?,?,?,?,?)", parametros);
@@ -123,3 +124,4 @@ public class LCliente {
         }
     }
 }
+ 

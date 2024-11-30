@@ -9,6 +9,7 @@ public class Cliente {
     private String nacionalidad;
     private String correo;
     private String telefono;
+    private boolean estado;
     
 
     public int getIdCliente() {
@@ -67,6 +68,14 @@ public class Cliente {
         this.telefono = telefono;
     }
 
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     public Cliente() {
     }
 
@@ -74,7 +83,7 @@ public class Cliente {
         this.idCliente = idCliente;
     }
 
-    public Cliente(int idCliente, String nombre, String apellido, String pasaporte, String nacionalidad, String correo, String telefono) {
+    public Cliente(int idCliente, String nombre, String apellido, String pasaporte, String nacionalidad, String correo, String telefono, boolean estado) {
         this.idCliente = idCliente;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -82,7 +91,7 @@ public class Cliente {
         this.nacionalidad = nacionalidad;
         this.correo = correo;
         this.telefono = telefono;
-    
+        this.estado = estado;
 
     }
 }
