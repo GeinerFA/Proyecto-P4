@@ -2,18 +2,18 @@
 package com.uca.producto.entities;
 
 public class Destino {
-    private int id_Destino;
+    private int id_destino;
     private String nombre;
     private String descripcion;
     private boolean estado;
-    private int id_Pais;
+    private int id_pais;
 
     public int getid_Destino() {
-        return id_Destino;
+        return id_destino;
     }
 
-    public void setid_Destino(int id_Destino) {
-        this.id_Destino = id_Destino;
+    public void setid_Destino(int id_destino) {
+        this.id_destino = id_destino;
     }
 
     public String getnombre() {
@@ -43,23 +43,23 @@ public class Destino {
     public Destino() {
     }
 
-    public Destino(int id_Destino) {
-        this.id_Destino = id_Destino;
+    public Destino(int id_destino) {
+        this.id_destino = id_destino;
     }
 
     public int getid_Pais() {
-        return id_Pais;
+        return id_pais;
     }
 
-    public void setidPais(int id_Pais) {
-        this.id_Pais = id_Pais;
+    public void setidPais(int id_pais) {
+        this.id_pais = id_pais;
     }
 
-    public Destino(int id_Destino, String nombre, String descripcion, boolean estado , int id_Pais) {
-        this.id_Destino = id_Destino;
+    public Destino(int id_destino, String nombre, String descripcion, boolean estado , int id_pais) {
+        this.id_destino = id_destino;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.estado = estado;
-        this.id_Pais = id_Pais;
+        this.id_pais = id_pais;
     }
 }
