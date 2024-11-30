@@ -1,5 +1,4 @@
 package com.uca.producto.logic;
-
 import com.uca.producto.db.ConnectionManager;
 import com.uca.producto.db.TParametro;
 import com.uca.producto.entities.Cliente;
@@ -8,7 +7,7 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+//prueba main
 public class LCliente {
     public ArrayList<Cliente> Listar() {
         ArrayList<Cliente> Clientes = new ArrayList<>();
@@ -77,18 +76,20 @@ public class LCliente {
     public int Guardar(Cliente Cliente) {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
-
+            
         parametros.add(new TParametro<>("p_nombre", Cliente.getNombre(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_apellido", Cliente.getApellido(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_pasaporte", Cliente.getPasaporte(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_nacionalidad", Cliente.getNacionalidad(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_correo", Cliente.getCorreo(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_telefono", Cliente.getTelefono(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_estado", Cliente.getEstado() ? 1 : 0, Types.INTEGER));
+
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
             if (cm.Connect()) {
-                return cm.Execute("proyecto.operaciones.sp_op_guardar_cliente(?,?,?)", parametros);
+                return cm.Execute("proyecto.operaciones.sp_op_guardar_cliente(?,?,?,?,?,?,?,?)", parametros);
             }
             return 0;
         } catch (Exception e) {
@@ -107,11 +108,13 @@ public class LCliente {
         parametros.add(new TParametro<>("p_nacionalidad", Cliente.getNacionalidad(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_correo", Cliente.getCorreo(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_telefono", Cliente.getTelefono(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_estado", Cliente.getEstado() ? 1 : 0, Types.INTEGER));
+
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
             if (cm.Connect()) {
-                return cm.Execute("proyecto.operaciones.sp_op_actualizar_cliente(?,?,?,?)", parametros);
+                return cm.Execute("proyecto.operaciones.sp_op_actualizar_cliente(?,?,?,?,?,?,?,?,?)", parametros);
             }
             return 0;
         } catch (Exception e) {
