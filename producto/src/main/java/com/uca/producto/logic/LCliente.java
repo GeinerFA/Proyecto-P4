@@ -27,8 +27,7 @@ public class LCliente {
                                 rs.getString("pasaporte"),
                                 rs.getString("nacionalidad"),
                                 rs.getString("correo"),
-                                rs.getString("telefono"),
-                                rs.getBoolean("estado")));
+                                rs.getString("telefono")));
                     }
                 } catch (Exception ex) {
                     Logger.getLogger(LCliente.class.getName()).log(Level.SEVERE, null, ex);
@@ -62,8 +61,7 @@ public class LCliente {
                                 rs.getString("pasaporte"),
                                 rs.getString("nacionalidad"),
                                 rs.getString("correo"),
-                                rs.getString("telefono"),
-                                rs.getBoolean("estado"));
+                                rs.getString("telefono"));
 
                     }
                 }
@@ -86,6 +84,7 @@ public class LCliente {
         parametros.add(new TParametro<>("p_correo", Cliente.getCorreo(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_telefono", Cliente.getTelefono(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_estado", Cliente.getEstado() ? 1 : 0, Types.INTEGER));
+
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
@@ -110,6 +109,7 @@ public class LCliente {
         parametros.add(new TParametro<>("p_correo", Cliente.getCorreo(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_telefono", Cliente.getTelefono(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_estado", Cliente.getEstado() ? 1 : 0, Types.INTEGER));
+
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
