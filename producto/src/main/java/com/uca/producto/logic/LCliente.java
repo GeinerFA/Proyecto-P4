@@ -79,7 +79,7 @@ public class LCliente {
     public int Guardar(Cliente Cliente) {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
-
+            
         parametros.add(new TParametro<>("p_nombre", Cliente.getNombre(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_apellido", Cliente.getApellido(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_pasaporte", Cliente.getPasaporte(), Types.VARCHAR));
