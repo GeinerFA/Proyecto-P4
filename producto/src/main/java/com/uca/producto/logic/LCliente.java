@@ -1,5 +1,4 @@
 package com.uca.producto.logic;
-
 import com.uca.producto.db.ConnectionManager;
 import com.uca.producto.db.TParametro;
 import com.uca.producto.entities.Cliente;
@@ -8,7 +7,7 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+//prueba main
 public class LCliente {
     public ArrayList<Cliente> Listar() {
         ArrayList<Cliente> Clientes = new ArrayList<>();
