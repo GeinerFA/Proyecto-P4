@@ -23,11 +23,11 @@ public class LDestino {
                 try (ResultSet rs = cm.Execute("proyecto.operaciones.sp_op_listar_destino(?)", parametros)) {
                     while (rs.next()) {
                         destinos.add(new Destino(
-                                rs.getInt("id_Destino"),
+                                rs.getInt("id_destino"),
                                 rs.getString("nombre"),
                                 rs.getClob("descripcion"),
                                 rs.getBoolean("estado"),
-                                rs.getInt("id_Pais")
+                                rs.getInt("id_pais")
                         ));
                     }
                 }
