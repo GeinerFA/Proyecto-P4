@@ -5,7 +5,7 @@ import java.sql.Clob;
 public class Destino {
     private int id_Destino;
     private String nombre;
-    private Clob descripcion;
+    private String descripcion;
     private boolean estado;
     private int id_Pais;
 
@@ -25,11 +25,11 @@ public class Destino {
         this.nombre = nombre;
     }
 
-    public Clob getdescripcion() {
+    public String getdescripcion() {
         return descripcion;
     }
 
-    public Clob setdescripcion(Clob descripcion) {
+    public String setdescripcion(String descripcion) {
         return this.descripcion = descripcion;
     }
 
@@ -56,7 +56,7 @@ public class Destino {
         this.id_Pais = idPais;
     }
 
-    public Destino(int id_Destino, String nombre, Clob descripcion, boolean estado , int idPais) {
+    public Destino(int id_Destino, String nombre, String descripcion, boolean estado , int idPais) {
         this.id_Destino = id_Destino;
         this.nombre = nombre;
         this.descripcion = descripcion;

@@ -25,7 +25,7 @@ public class LDestino {
                         destinos.add(new Destino(
                                 rs.getInt("id_destino"),
                                 rs.getString("nombre"),
-                                rs.getClob("descripcion"),
+                                rs.getString("descripcion"),
                                 rs.getBoolean("estado"),
                                 rs.getInt("id_pais")
                         ));
@@ -59,7 +59,7 @@ public class LDestino {
                         destino = new Destino(
                                 rs.getInt("id_Destino"),
                                 rs.getString("nombre"),
-                                rs.getClob("descripcion"),
+                                rs.getString("descripcion"),
                                 rs.getBoolean("estado"),
                                 rs.getInt("id_Pais")
                         );
@@ -78,15 +78,15 @@ public class LDestino {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
         
-        parametros.add(new TParametro<>("nombre", destino.getnombre(), Types.VARCHAR));
-        parametros.add(new TParametro<>("descripcion", destino.getid_Destino(), Types.VARCHAR));
-        parametros.add(new TParametro<>("estado", destino.getestado(), Types.VARCHAR));
-        parametros.add(new TParametro<>("id_Pais", destino.getid_Pais(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_nombre", destino.getnombre(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_descripcion", destino.getdescripcion(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_estado", destino.getestado()? 1 : 0, Types.INTEGER));
+        parametros.add(new TParametro<>("p_id_Pais", destino.getid_Pais(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
             if (cm.Connect()) {
-                return cm.Execute("proyecto.operaciones.sp_op_guardar_destino(?,?,?)", parametros);
+                return cm.Execute("proyecto.operaciones.sp_op_guardar_destino(?,?,?,?,?)", parametros);
             }
             return 0;
         } catch (Exception e) {
@@ -98,15 +98,16 @@ public class LDestino {
     public int Actualizar(Destino destino) {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
-        parametros.add(new TParametro<>("nombre", destino.getnombre(), Types.VARCHAR));
-        parametros.add(new TParametro<>("descripcion", destino.getid_Destino(), Types.VARCHAR));
-        parametros.add(new TParametro<>("estado", destino.getestado(), Types.VARCHAR));
-        parametros.add(new TParametro<>("id_Pais", destino.getid_Pais(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_id_destino", destino.getnombre(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_nombre", destino.getnombre(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_descripcion", destino.getdescripcion(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_estado", destino.getestado()? 1 : 0, Types.INTEGER));
+        parametros.add(new TParametro<>("p_id_Pais", destino.getid_Pais(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
             if (cm.Connect()) {
-                return cm.Execute("proyecto.operaciones.sp_op_actualizar_destino(?,?,?,?)", parametros);
+                return cm.Execute("proyecto.operaciones.sp_op_actualizar_destino(?,?,?,?,?,?)", parametros);
             }
             return 0;
         } catch (Exception e) {
