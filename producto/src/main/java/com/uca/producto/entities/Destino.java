@@ -6,7 +6,7 @@ public class Destino {
     private String nombre;
     private String descripcion;
     private boolean estado;
-    private int id_pais;
+    private Pais pais;
 
     public int getid_Destino() {
         return id_destino;
@@ -47,19 +47,19 @@ public class Destino {
         this.id_destino = id_destino;
     }
 
-    public int getid_Pais() {
-        return id_pais;
+    public Pais getpais() {
+        return pais;
     }
 
-    public void setidPais(int id_pais) {
-        this.id_pais = id_pais;
+    public void setpais(Pais pais) {
+        this.pais = pais;
     }
 
-    public Destino(int id_destino, String nombre, String descripcion, boolean estado , int id_pais) {
+    public Destino(int id_destino, String nombre, String descripcion, boolean estado , Pais pais) {
         this.id_destino = id_destino;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.estado = estado;
-        this.id_pais = id_pais;
+        this.pais = pais;
     }
 }

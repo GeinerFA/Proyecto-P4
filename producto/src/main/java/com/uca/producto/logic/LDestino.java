@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import com.uca.producto.db.ConnectionManager;
 import com.uca.producto.db.TParametro;
 import com.uca.producto.entities.Destino;
+import com.uca.producto.entities.Pais;
 
 public class LDestino {
     public ArrayList<Destino> Listar() {
@@ -27,10 +28,11 @@ public class LDestino {
                                 rs.getString("nombre"),
                                 rs.getString("descripcion"),
                                 rs.getBoolean("estado"),
-                                rs.getInt("id_pais")
+                                new Pais (rs.getInt("idPais"))
+                                
                         ));
                     }
-                }
+                }                
                 catch (Exception ex) {
                     Logger.getLogger(LDestino.class.getName()).log(Level.SEVERE, null, ex);
                     return null;
@@ -61,7 +63,7 @@ public class LDestino {
                                 rs.getString("nombre"),
                                 rs.getString("descripcion"),
                                 rs.getBoolean("estado"),
-                                rs.getInt("id_Pais")
+                                new Pais (rs.getInt("id_pais"))
                         );
 
                     }
@@ -81,7 +83,7 @@ public class LDestino {
         parametros.add(new TParametro<>("p_nombre", destino.getnombre(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_descripcion", destino.getdescripcion(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_estado", destino.getestado()? 1 : 0, Types.INTEGER));
-        parametros.add(new TParametro<>("p_id_Pais", destino.getid_Pais(), Types.NUMERIC));
+//        parametros.add(new TParametro<>("p_id_Pais", destino.getid_Pais(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
@@ -102,7 +104,7 @@ public class LDestino {
         parametros.add(new TParametro<>("p_nombre", destino.getnombre(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_descripcion", destino.getdescripcion(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_estado", destino.getestado()? 1 : 0, Types.INTEGER));
-        parametros.add(new TParametro<>("p_id_Pais", destino.getid_Pais(), Types.NUMERIC));
+  //      parametros.add(new TParametro<>("p_id_Pais", destino.getid_Pais(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
