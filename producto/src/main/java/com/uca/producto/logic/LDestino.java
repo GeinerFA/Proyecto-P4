@@ -28,12 +28,14 @@ public class LDestino {
                                 rs.getString("nombre"),
                                 rs.getString("descripcion"),
                                 rs.getBoolean("estado"),
-                                new Pais (rs.getInt("idPais"))
-                                
+                                new Pais(
+                                        rs.getInt("id_Pais"),
+                                        rs.getString("nombre"),
+                                        rs.getString("codigo_Pais"))
+
                         ));
                     }
-                }                
-                catch (Exception ex) {
+                } catch (Exception ex) {
                     Logger.getLogger(LDestino.class.getName()).log(Level.SEVERE, null, ex);
                     return null;
 
@@ -63,8 +65,9 @@ public class LDestino {
                                 rs.getString("nombre"),
                                 rs.getString("descripcion"),
                                 rs.getBoolean("estado"),
-                                new Pais (rs.getInt("id_pais"))
-                        );
+                                new Pais(rs.getInt("id_Pais"),
+                                        rs.getString("nombre"),
+                                        rs.getString("codigo_Pais")));
 
                     }
                 }
@@ -76,24 +79,25 @@ public class LDestino {
         }
     }
 
-    public int Guardar(Destino destino) {
+    public String Guardar(Destino destino) {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
-        
+
         parametros.add(new TParametro<>("p_nombre", destino.getnombre(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_descripcion", destino.getdescripcion(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_estado", destino.getestado()? 1 : 0, Types.INTEGER));
-//        parametros.add(new TParametro<>("p_id_Pais", destino.getid_Pais(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_descripcion", destino.getdescripcion(), Types.CLOB));
+        parametros.add(new TParametro<>("p_estado", destino.getestado(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_id_pais", destino.getidpais(),Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
             if (cm.Connect()) {
-                return cm.Execute("proyecto.operaciones.sp_op_guardar_destino(?,?,?,?,?)", parametros);
+                Object result = cm.Execute("proyecto.operaciones.sp_op_guardar_destino(?,?,?,?,?)", parametros);
+                return result != null? result.toString() : "EMPTY RESULT";
             }
-            return 0;
+            return "0";
         } catch (Exception e) {
             Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, e);
-            return -1;
+            return "Error: " + e.getMessage();
         }
     }
 
@@ -103,8 +107,9 @@ public class LDestino {
         parametros.add(new TParametro<>("p_id_destino", destino.getid_Destino(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_nombre", destino.getnombre(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_descripcion", destino.getdescripcion(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_estado", destino.getestado()? 1 : 0, Types.INTEGER));
-  //      parametros.add(new TParametro<>("p_id_Pais", destino.getid_Pais(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_estado", destino.getestado() ? 1 : 0, Types.INTEGER));
+        // parametros.add(new TParametro<>("p_id_Pais", destino.getid_Pais(),
+        // Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
