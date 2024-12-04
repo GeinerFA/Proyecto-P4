@@ -3,7 +3,6 @@ package com.uca.producto.entities;
 
 public class Destino {
     private int id_destino;
-    private int id_pais;
     private String nombre;
     private String descripcion;
     private boolean estado;
@@ -50,9 +49,6 @@ public class Destino {
 
     public Pais getpais() {
         return pais;
-    }
-    public int getidpais() {
-        return this.id_pais;
     }
 
     public void setpais(Pais pais) {

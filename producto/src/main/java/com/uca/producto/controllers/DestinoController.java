@@ -30,7 +30,7 @@ public class DestinoController {
     }
 
     @PostMapping
-    public @ResponseBody String Guardar(@RequestBody Destino Destino) {
+    public @ResponseBody int Guardar(@RequestBody Destino Destino) {
         return new LDestino().Guardar(Destino);
     }
 

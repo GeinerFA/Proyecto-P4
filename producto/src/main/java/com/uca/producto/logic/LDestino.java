@@ -79,37 +79,35 @@ public class LDestino {
         }
     }
 
-    public String Guardar(Destino destino) {
+    public int Guardar(Destino destino) {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
 
         parametros.add(new TParametro<>("p_nombre", destino.getnombre(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_descripcion", destino.getdescripcion(), Types.CLOB));
-        parametros.add(new TParametro<>("p_estado", destino.getestado(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_id_pais", destino.getidpais(),Types.NUMERIC));
+        parametros.add(new TParametro<>("p_descripcion", destino.getdescripcion(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_estado", destino.getestado()? 1 : 0, Types.INTEGER));
+        parametros.add(new TParametro<>("p_id_pais", destino.getpais().getIdPais(),Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
             if (cm.Connect()) {
-                Object result = cm.Execute("proyecto.operaciones.sp_op_guardar_destino(?,?,?,?,?)", parametros);
-                return result != null? result.toString() : "EMPTY RESULT";
+                return cm.Execute("proyecto.operaciones.sp_op_guardar_destino(?,?,?,?,?)", parametros);
             }
-            return "0";
+            return 0;
         } catch (Exception e) {
             Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, e);
-            return "Error: " + e.getMessage();
+            return -1;
         }
     }
 
     public int Actualizar(Destino destino) {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
-        parametros.add(new TParametro<>("p_id_destino", destino.getid_Destino(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_id_destino", destino.getid_Destino(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_nombre", destino.getnombre(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_descripcion", destino.getdescripcion(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_estado", destino.getestado() ? 1 : 0, Types.INTEGER));
-        // parametros.add(new TParametro<>("p_id_Pais", destino.getid_Pais(),
-        // Types.NUMERIC));
+        parametros.add(new TParametro<>("p_estado", destino.getestado()? 1 : 0, Types.INTEGER));
+        parametros.add(new TParametro<>("p_id_pais", destino.getpais().getIdPais(),Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
