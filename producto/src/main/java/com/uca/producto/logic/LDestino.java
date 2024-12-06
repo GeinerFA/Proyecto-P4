@@ -61,13 +61,16 @@ public class LDestino {
                     if (rs.next()) {
                         // Cargamos la información del destino
                         destino = new Destino(
-                                rs.getInt("id_Destino"),
+                                rs.getInt("id_destino"),
                                 rs.getString("nombre"),
                                 rs.getString("descripcion"),
                                 rs.getBoolean("estado"),
-                                new Pais(rs.getInt("id_Pais"),
+                                new Pais(
+                                        rs.getInt("id_Pais"),
                                         rs.getString("nombre"),
-                                        rs.getString("codigo_Pais")));
+                                        rs.getString("codigo_Pais"))
+
+                        );
 
                     }
                 }
@@ -85,8 +88,8 @@ public class LDestino {
 
         parametros.add(new TParametro<>("p_nombre", destino.getnombre(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_descripcion", destino.getdescripcion(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_estado", destino.getestado()? 1 : 0, Types.INTEGER));
-        parametros.add(new TParametro<>("p_id_pais", destino.getpais().getIdPais(),Types.NUMERIC));
+        parametros.add(new TParametro<>("p_estado", destino.getestado() ? 1 : 0, Types.INTEGER));
+        parametros.add(new TParametro<>("p_id_pais", destino.getpais().getIdPais(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
@@ -106,8 +109,8 @@ public class LDestino {
         parametros.add(new TParametro<>("p_id_destino", destino.getid_Destino(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_nombre", destino.getnombre(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_descripcion", destino.getdescripcion(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_estado", destino.getestado()? 1 : 0, Types.INTEGER));
-        parametros.add(new TParametro<>("p_id_pais", destino.getpais().getIdPais(),Types.NUMERIC));
+        parametros.add(new TParametro<>("p_estado", destino.getestado() ? 1 : 0, Types.INTEGER));
+        parametros.add(new TParametro<>("p_id_pais", destino.getpais().getIdPais(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
