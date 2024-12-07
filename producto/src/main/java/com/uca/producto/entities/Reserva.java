@@ -6,7 +6,7 @@ public class Reserva {
     private int id_reserva;
     private Date fecha_ida;
     private Date fecha_regreso;
-    private double precio;
+    private int precio;
     private boolean estado; 
     private Cliente cliente;
 
@@ -39,7 +39,7 @@ public class Reserva {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
 
@@ -66,7 +66,7 @@ public class Reserva {
         this.cliente = cliente;
     }
 
-    public Reserva(int id_reserva, Date fecha_ida, Date fecha_regreso, double precio, boolean estado, Cliente cliente) {
+    public Reserva(int id_reserva, Date fecha_ida, Date fecha_regreso, int precio, boolean estado, Cliente cliente) {
         this.id_reserva = id_reserva;
         this.fecha_ida = fecha_ida;
         this.fecha_regreso = fecha_regreso;

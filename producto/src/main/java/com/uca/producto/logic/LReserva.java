@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 import com.uca.producto.db.ConnectionManager;
 import com.uca.producto.db.TParametro;
 import com.uca.producto.entities.Cliente;
-import com.uca.producto.entities.Destino;
 import com.uca.producto.entities.Reserva;
 
 public class LReserva {
@@ -29,7 +28,7 @@ public class LReserva {
                                 rs.getInt("id_reserva"),
                                 rs.getDate("fecha_ida"),
                                 rs.getDate("fecha_regreso"),
-                                rs.getDouble("precio"),
+                                rs.getInt("precio"),
                                 rs.getBoolean("estado"),
                                 new Cliente(rs.getInt("id_cliente"),
                                         rs.getString("nombre"),
@@ -68,7 +67,7 @@ public class LReserva {
                             rs.getInt("id_reserva"),
                             rs.getDate("fecha_ida"),
                             rs.getDate("fecha_regreso"),
-                            rs.getDouble("precio"),
+                            rs.getInt("precio"),
                             rs.getBoolean("estado"),
                             new Cliente(rs.getInt("id_cliente"),
                                     rs.getString("nombre"),
@@ -94,7 +93,7 @@ public class LReserva {
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
         parametros.add(new TParametro<>("p_fecha_ida", reserva.getFecha_ida(), Types.DATE));
         parametros.add(new TParametro<>("p_fecha_regreso", reserva.getFecha_regreso(), Types.DATE));
-        parametros.add(new TParametro<>("p_precio", reserva.getPrecio(), Types.DOUBLE));
+        parametros.add(new TParametro<>("p_precio", reserva.getPrecio(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_id_cliente", reserva.getCliente(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_estado", reserva.getEstado() ? 1 : 0, Types.INTEGER));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
