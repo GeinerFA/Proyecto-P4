@@ -2,23 +2,22 @@ package com.uca.producto.entities;
 import java.util.Date;
  
 public class Alojamiento {
-    private int idAlojamiento;
+    private int id_alojamiento;
     private String nombre;
-    private int cantidadPersonas;
+    private int cantidad_personas;
     private Date fecha_ingreso;
     private Date fecha_salida;
     private int precio;
     private String ubicacion;
     private boolean estado;
     private Destino destino;
-    private Pais pais;
  
     public int getidAlojamiento() {
-        return idAlojamiento;
+        return id_alojamiento;
     }
  
-    public void setidAlojamiento(int idAlojamiento) {
-        this.idAlojamiento = idAlojamiento;
+    public void setidAlojamiento(int id_alojamiento) {
+        this.id_alojamiento = id_alojamiento;
     }
  
     public String getnombre() {
@@ -30,11 +29,11 @@ public class Alojamiento {
     }
  
     public int getcantidadPersonas(){
-        return cantidadPersonas;
+        return cantidad_personas;
     }
    
     public void setcantidadPersonas(int cantidadPersonas) {
-        this.cantidadPersonas = cantidadPersonas;
+        this.cantidad_personas = cantidadPersonas;
     }
  
     public Date getfecha_ingreso(){
@@ -80,36 +79,30 @@ public class Alojamiento {
     public Alojamiento() {
     }
  
-    public Alojamiento(int idAlojamiento) {
-        this.idAlojamiento = idAlojamiento;
+    public Alojamiento(int id_alojamiento) {
+        this.id_alojamiento = id_alojamiento;
     }
  
-    public Pais getdestino() {
-        return pais;
+    public Destino getdestino() {
+        return destino;
     }
 
     public void setdestino(Destino destino) {
         this.destino = destino;
     }
  
-    public Pais getpais() {
-        return pais;
-    }
-
-    public void setpais(Pais pais) {
-        this.pais = pais;
-    }
+   
  
-    public Alojamiento(int idAlojamiento, String nombre, int cantidadPersonas, Date fecha_ingreso, Date fecha_salida, int precio, String ubicacion,boolean estado, Destino destino, Pais pais) {
-        this.idAlojamiento = idAlojamiento;
+    public Alojamiento(int id_alojamiento, String nombre, int cantidadPersonas, Date fecha_ingreso, Date fecha_salida, int precio, String ubicacion,boolean estado, Destino destino) {
+        this.id_alojamiento = id_alojamiento;
         this.nombre = nombre;
-        this.cantidadPersonas = cantidadPersonas;
+        this.cantidad_personas = cantidadPersonas;
         this.fecha_ingreso = fecha_ingreso;
         this.fecha_salida = fecha_salida;
         this.precio = precio;
         this.ubicacion = ubicacion;
         this.estado = estado;
         this.destino = destino;
-        this.pais = pais;
+        
     }
 }
