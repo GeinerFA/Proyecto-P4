@@ -7,29 +7,10 @@ public class Reserva {
     private Date fecha_ida;
     private Date fecha_regreso;
     private double precio;
-    private char estado; // Representa '0' o '1'
-    private Cliente cliente; // Relación con la entidad Cliente
+    private boolean estado; 
+    private Cliente cliente;
 
-    // Constructor vacío
-    public Reserva() {
-    }
 
-    // Constructor con id
-    public Reserva(int id_reserva) {
-        this.id_reserva = id_reserva;
-    }
-
-    // Constructor con todos los campos
-    public Reserva(int id_reserva, Date fecha_ida, Date fecha_regreso, double precio, char estado, Cliente cliente) {
-        this.id_reserva = id_reserva;
-        this.fecha_ida = fecha_ida;
-        this.fecha_regreso = fecha_regreso;
-        this.precio = precio;
-        this.estado = estado;
-        this.cliente = cliente;
-    }
-
-    // Getters y setters
     public int getId_reserva() {
         return id_reserva;
     }
@@ -62,16 +43,19 @@ public class Reserva {
         this.precio = precio;
     }
 
-    public char getEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(char estado) {
-        if (estado == '0' || estado == '1') {
-            this.estado = estado;
-        } else {
-            throw new IllegalArgumentException("El estado debe ser '0' o '1'.");
-        }
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    public Reserva() {
+    }
+ 
+    public Reserva(int id_reserva) {
+        this.id_reserva = id_reserva;
     }
 
     public Cliente getCliente() {
@@ -79,6 +63,15 @@ public class Reserva {
     }
 
     public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Reserva(int id_reserva, Date fecha_ida, Date fecha_regreso, double precio, boolean estado, Cliente cliente) {
+        this.id_reserva = id_reserva;
+        this.fecha_ida = fecha_ida;
+        this.fecha_regreso = fecha_regreso;
+        this.precio = precio;
+        this.estado = estado;
         this.cliente = cliente;
     }
 }

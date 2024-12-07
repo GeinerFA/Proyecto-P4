@@ -8,10 +8,12 @@ import java.util.logging.Logger;
 
 import com.uca.producto.db.ConnectionManager;
 import com.uca.producto.db.TParametro;
+import com.uca.producto.entities.Cliente;
+import com.uca.producto.entities.Destino;
 import com.uca.producto.entities.Reserva;
 
 public class LReserva {
-    
+
     public ArrayList<Reserva> Listar() {
         ArrayList<Reserva> reservas = new ArrayList<>();
 
@@ -28,9 +30,16 @@ public class LReserva {
                                 rs.getDate("fecha_ida"),
                                 rs.getDate("fecha_regreso"),
                                 rs.getDouble("precio"),
-                                rs.getString("estado").charAt(0),
-                                rs.getInt("id_cliente")
-                        ));
+                                rs.getBoolean("estado"),
+                                new Cliente(rs.getInt("id_cliente"),
+                                        rs.getString("nombre"),
+                                        rs.getString("apellido"),
+                                        rs.getString("pasaporte"),
+                                        rs.getString("nacionalidad"),
+                                        rs.getString("correo"),
+                                        rs.getString("telefono"),
+                                        rs.getBoolean("estado"))
+                                        ));
                     }
                 } catch (Exception ex) {
                     Logger.getLogger(LReserva.class.getName()).log(Level.SEVERE, null, ex);
@@ -56,13 +65,20 @@ public class LReserva {
                 try (ResultSet rs = cm.Execute("proyecto.operaciones.sp_op_consultar_reserva(?,?)", parametros)) {
                     if (rs.next()) {
                         reserva = new Reserva(
-                                rs.getInt("id_reserva"),
-                                rs.getDate("fecha_ida"),
-                                rs.getDate("fecha_regreso"),
-                                rs.getDouble("precio"),
-                                rs.getString("estado").charAt(0),
-                                rs.getInt("id_cliente")
-                        );
+                            rs.getInt("id_reserva"),
+                            rs.getDate("fecha_ida"),
+                            rs.getDate("fecha_regreso"),
+                            rs.getDouble("precio"),
+                            rs.getBoolean("estado"),
+                            new Cliente(rs.getInt("id_cliente"),
+                                    rs.getString("nombre"),
+                                    rs.getString("apellido"),
+                                    rs.getString("pasaporte"),
+                                    rs.getString("nacionalidad"),
+                                    rs.getString("correo"),
+                                    rs.getString("telefono"),
+                                    rs.getBoolean("estado"))
+                                    );
                     }
                 }
             }
@@ -74,12 +90,13 @@ public class LReserva {
     }
 
     public int Guardar(Reserva reserva) {
+        // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
-        parametros.add(new TParametro<>("p_fecha_ida", reserva.getFechaIda(), Types.DATE));
-        parametros.add(new TParametro<>("p_fecha_regreso", reserva.getFechaRegreso(), Types.DATE));
+        parametros.add(new TParametro<>("p_fecha_ida", reserva.getFecha_ida(), Types.DATE));
+        parametros.add(new TParametro<>("p_fecha_regreso", reserva.getFecha_regreso(), Types.DATE));
         parametros.add(new TParametro<>("p_precio", reserva.getPrecio(), Types.DOUBLE));
-        parametros.add(new TParametro<>("p_estado", String.valueOf(reserva.getEstado()), Types.CHAR));
-        parametros.add(new TParametro<>("p_id_cliente", reserva.getIdCliente(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_id_cliente", reserva.getCliente(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_estado", reserva.getEstado() ? 1 : 0, Types.INTEGER));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
@@ -88,19 +105,19 @@ public class LReserva {
             }
             return 0;
         } catch (Exception e) {
-            Logger.getLogger(LReserva.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, e);
             return -1;
         }
     }
 
     public int Actualizar(Reserva reserva) {
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
-        parametros.add(new TParametro<>("p_id_reserva", reserva.getIdReserva(), Types.NUMERIC));
-        parametros.add(new TParametro<>("p_fecha_ida", reserva.getFechaIda(), Types.DATE));
-        parametros.add(new TParametro<>("p_fecha_regreso", reserva.getFechaRegreso(), Types.DATE));
+        parametros.add(new TParametro<>("p_id_reserva", reserva.getId_reserva(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_fecha_ida", reserva.getFecha_ida(), Types.DATE));
+        parametros.add(new TParametro<>("p_fecha_regreso", reserva.getFecha_regreso(), Types.DATE));
         parametros.add(new TParametro<>("p_precio", reserva.getPrecio(), Types.DOUBLE));
         parametros.add(new TParametro<>("p_estado", String.valueOf(reserva.getEstado()), Types.CHAR));
-        parametros.add(new TParametro<>("p_id_cliente", reserva.getIdCliente(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_id_cliente", reserva.getCliente(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
