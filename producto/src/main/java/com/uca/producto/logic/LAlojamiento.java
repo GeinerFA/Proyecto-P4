@@ -27,23 +27,22 @@ public class LAlojamiento {
                         alojamientos.add(new Alojamiento(
                                 rs.getInt("id_alojamiento"),
                                 rs.getString("nombre"),
-                                rs.getInt("cantidadPersonas"),
+                                rs.getInt("cantidad_Personas"),
                                 rs.getDate("fecha_ingreso"),
                                 rs.getDate("fecha_salida"),
                                 rs.getInt("precio"),
                                 rs.getString("ubicacion"),
                                 rs.getBoolean("estado"),
-                                new Destino(
-                                        rs.getInt("id_destino"),
+                                 new Destino(
+                                    rs.getInt("id_destino"),
+                                    rs.getString("nombre"),
+                                    rs.getString("descripcion"),
+                                    rs.getBoolean("estado"),
+                                new Pais(
+                                        rs.getInt("id_Pais"),
                                         rs.getString("nombre"),
-                                        rs.getString("descripcion"),
-                                        rs.getBoolean("estado"),
-                                        new Pais(
-                                                rs.getInt("id_Pais"),
-                                                rs.getString("nombre"),
-                                                rs.getString("codigo_Pais")
-
-                                        )
+                                        rs.getString("codigo_Pais"))
+                               
                                 )
                             )
                         );
@@ -111,18 +110,18 @@ public class LAlojamiento {
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
 
         parametros.add(new TParametro<>("p_nombre", alojamiento.getnombre(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_cantidad_personas", alojamiento.getcantidadPersonas(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_fecha_ingreso", alojamiento.getfecha_ingreso(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_fecha_salida", alojamiento.getfecha_salida(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_cantidad_personas", alojamiento.getcantidadPersonas(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_fecha_ingreso", alojamiento.getfecha_ingreso(), Types.DATE));
+        parametros.add(new TParametro<>("p_fecha_salida", alojamiento.getfecha_salida(), Types.DATE));
         parametros.add(new TParametro<>("p_precio", alojamiento.getprecio(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_ubicacion", alojamiento.getubicacion(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_estado", alojamiento.getestado(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_id_destino", alojamiento.getdestino(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_id_destino", alojamiento.getdestino().getid_Destino(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
             if (cm.Connect()) {
-                return cm.Execute("proyecto.operaciones.sp_op_guardar_alojamiento(?,?,?)", parametros);
+                return cm.Execute("proyecto.operaciones.sp_op_guardar_alojamiento(?,?,?,?,?,?,?,?,?)", parametros);
             }
             return 0;
         } catch (Exception e) {
@@ -134,19 +133,20 @@ public class LAlojamiento {
     public int Actualizar(Alojamiento alojamiento) {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
+        parametros.add(new TParametro<>("p_id_alojamiento", alojamiento.getidAlojamiento(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_nombre", alojamiento.getnombre(), Types.VARCHAR));
-        parametros.add(new TParametro<>("cantidadPersonas", alojamiento.getcantidadPersonas(), Types.VARCHAR));
-        parametros.add(new TParametro<>("fecha_ingreso", alojamiento.getfecha_ingreso(), Types.VARCHAR));
-        parametros.add(new TParametro<>("fecha_salida", alojamiento.getfecha_salida(), Types.VARCHAR));
-        parametros.add(new TParametro<>("precio", alojamiento.getprecio(), Types.VARCHAR));
-        parametros.add(new TParametro<>("ubicacion", alojamiento.getubicacion(), Types.VARCHAR));
-        parametros.add(new TParametro<>("estado", alojamiento.getestado(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_id_destino", alojamiento.getdestino(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_cantidad_personas", alojamiento.getcantidadPersonas(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_fecha_ingreso", alojamiento.getfecha_ingreso(), Types.DATE));
+        parametros.add(new TParametro<>("p_fecha_salida", alojamiento.getfecha_salida(), Types.DATE));
+        parametros.add(new TParametro<>("p_precio", alojamiento.getprecio(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_ubicacion", alojamiento.getubicacion(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_estado", alojamiento.getestado(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_id_destino", alojamiento.getdestino().getid_Destino(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
             if (cm.Connect()) {
-                return cm.Execute("proyecto.operaciones.sp_op_actualizar_alojamiento(?,?,?,?)", parametros);
+                return cm.Execute("proyecto.operaciones.sp_op_actualizar_alojamiento(?,?,?,?,?,?,?,?,?,?)", parametros);
             }
             return 0;
         } catch (Exception e) {
