@@ -11,11 +11,11 @@ public class Reserva {
     private Cliente cliente;
 
 
-    public int getId_reserva() {
+    public int getid_reserva() {
         return id_reserva;
     }
 
-    public void setId_reserva(int id_reserva) {
+    public void setid_reserva(int id_reserva) {
         this.id_reserva = id_reserva;
     }
 
