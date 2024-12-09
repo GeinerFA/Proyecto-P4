@@ -115,7 +115,7 @@ public class LReserva {
     public int Actualizar(Reserva reserva) {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
-        parametros.add(new TParametro<>("p_id_reserva", reserva.getid_reserva(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_id_reserva", reserva.getidReserva(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_fecha_ida", reserva.getFecha_ida(), Types.DATE));
         parametros.add(new TParametro<>("p_fecha_regreso", reserva.getFecha_regreso(), Types.DATE));
         parametros.add(new TParametro<>("p_precio", reserva.getPrecio(), Types.VARCHAR));
@@ -125,7 +125,7 @@ public class LReserva {
 
         try (ConnectionManager cm = new ConnectionManager()) {
             if (cm.Connect()) {
-                return cm.Execute("proyecto.operaciones.sp_op_actualizar_reserva(?,?,?,?,?,?,?,?,?,?)", parametros);
+                return cm.Execute("proyecto.operaciones.sp_op_actualizar_reserva(?,?,?,?,?,?,?)", parametros);
             }
             return 0;
         } catch (Exception e) {

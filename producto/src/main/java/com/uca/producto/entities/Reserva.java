@@ -11,7 +11,7 @@ public class Reserva {
     private Cliente cliente;
 
 
-    public int getid_reserva() {
+    public int getidReserva() {
         return id_reserva;
     }
 
