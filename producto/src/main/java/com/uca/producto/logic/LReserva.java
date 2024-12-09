@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 
 import com.uca.producto.db.ConnectionManager;
 import com.uca.producto.db.TParametro;
-import com.uca.producto.entities.Alojamiento;
 import com.uca.producto.entities.Cliente;
 import com.uca.producto.entities.Reserva;
 
