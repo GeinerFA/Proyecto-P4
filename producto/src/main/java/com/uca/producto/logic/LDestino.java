@@ -85,7 +85,6 @@ public class LDestino {
     public int Guardar(Destino destino) {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
-
         parametros.add(new TParametro<>("p_nombre", destino.getnombre(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_descripcion", destino.getdescripcion(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_estado", destino.getestado() ? 1 : 0, Types.INTEGER));
