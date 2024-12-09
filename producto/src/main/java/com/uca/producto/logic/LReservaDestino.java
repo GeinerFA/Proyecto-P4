@@ -26,13 +26,13 @@ public class LReservaDestino {
 
         try (ConnectionManager cm = new ConnectionManager()) {
             if (cm.Connect()) {
-                try (ResultSet rs = cm.Execute("proyecto.operaciones.sp_op_consultar_reserva(?,?)", parametros)) {
+                try (ResultSet rs = cm.Execute("proyecto.operaciones.sp_op_consultar_reserva_destino(?,?)", parametros)) {
                     if (rs.next()) {
                         reservadestino = new ReservaDestino(
                                 rs.getInt("id_reserva_destino"),
                                 new Alojamiento(
                                         rs.getInt("id_alojamiento"),
-                                        rs.getString("nombre"),
+                                        rs.getString("nombre_alojamiento"),
                                         rs.getInt("cantidad_Personas"),
                                         rs.getDate("fecha_ingreso"),
                                         rs.getDate("fecha_salida"),
