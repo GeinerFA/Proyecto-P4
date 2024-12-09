@@ -25,13 +25,13 @@ public class LDestino {
                     while (rs.next()) {
                         destinos.add(new Destino(
                                 rs.getInt("id_destino"),
-                                rs.getString("nombre"),
-                                rs.getString("descripcion"),
-                                rs.getBoolean("estado"),
+                                    rs.getString("nombre"),
+                                    rs.getString("descripcion"),
+                                    rs.getBoolean("estado"),
                                 new Pais(
-                                        rs.getInt("id_Pais"),
-                                        rs.getString("nombre"),
-                                        rs.getString("codigo_Pais"))
+                                    rs.getInt("id_Pais"),
+                                    rs.getString("nombre_pais"),
+                                    rs.getString("codigo_Pais"))
 
                         ));
                     }
@@ -66,9 +66,9 @@ public class LDestino {
                                 rs.getString("descripcion"),
                                 rs.getBoolean("estado"),
                                 new Pais(
-                                        rs.getInt("id_Pais"),
-                                        rs.getString("nombre"),
-                                        rs.getString("codigo_Pais"))
+                                    rs.getInt("id_Pais"),
+                                    rs.getString("nombre_pais"),
+                                    rs.getString("codigo_Pais"))
 
                         );
 
