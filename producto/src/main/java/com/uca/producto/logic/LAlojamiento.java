@@ -33,14 +33,14 @@ public class LAlojamiento {
                                 rs.getInt("precio"),
                                 rs.getString("ubicacion"),
                                 rs.getBoolean("estado"),
-                                 new Destino(
+                                new Destino(
                                     rs.getInt("id_destino"),
-                                    rs.getString("nombre"),
-                                    rs.getString("descripcion"),
-                                    rs.getBoolean("estado"),
+                                    rs.getString("nombre_destino"),
+                                    rs.getString("descripcion_destino"),
+                                    rs.getBoolean("estado_destino"),
                                 new Pais(
                                         rs.getInt("id_Pais"),
-                                        rs.getString("nombre"),
+                                        rs.getString("nombre_pais"),
                                         rs.getString("codigo_Pais"))
                                
                                 )
@@ -83,12 +83,12 @@ public class LAlojamiento {
                             rs.getBoolean("estado"),
                             new Destino(
                                     rs.getInt("id_destino"),
-                                    rs.getString("nombre"),
-                                    rs.getString("descripcion"),
-                                    rs.getBoolean("estado"),
+                                    rs.getString("nombre_destino"),
+                                    rs.getString("descripcion_destino"),
+                                    rs.getBoolean("estado_destino"),
                                     new Pais(
                                             rs.getInt("id_Pais"),
-                                            rs.getString("nombre"),
+                                            rs.getString("nombre_Pais"),
                                             rs.getString("codigo_Pais")
 
                                     )

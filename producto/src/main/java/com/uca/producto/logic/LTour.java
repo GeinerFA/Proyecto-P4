@@ -35,12 +35,12 @@ public class LTour {
                                 rs.getBoolean("estado"),
                                  new Destino(
                                     rs.getInt("id_destino"),
-                                    rs.getString("nombre"),
-                                    rs.getString("descripcion"),
-                                    rs.getBoolean("estado"),
+                                    rs.getString("nombre_destino"),
+                                    rs.getString("descripcion_destino"),
+                                    rs.getBoolean("estado_destino"),
                                 new Pais(
                                         rs.getInt("id_Pais"),
-                                        rs.getString("nombre"),
+                                        rs.getString("nombre_pais"),
                                         rs.getString("codigo_Pais"))
                                
                                 )
@@ -48,14 +48,14 @@ public class LTour {
                         );
                     }
                 } catch (Exception ex) {
-                    Logger.getLogger(LAlojamiento.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(LTour.class.getName()).log(Level.SEVERE, null, ex);
                     return null;
 
                 }
             }
             return tours;
         } catch (Exception ex) {
-            Logger.getLogger(LAlojamiento.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LTour.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -82,12 +82,12 @@ public class LTour {
                             rs.getBoolean("estado"),
                              new Destino(
                                 rs.getInt("id_destino"),
-                                rs.getString("nombre"),
-                                rs.getString("descripcion"),
-                                rs.getBoolean("estado"),
+                                rs.getString("nombre_destino"),
+                                rs.getString("descripcion_destino"),
+                                rs.getBoolean("estado_destino"),
                             new Pais(
                                     rs.getInt("id_Pais"),
-                                    rs.getString("nombre"),
+                                    rs.getString("nombre_pais"),
                                     rs.getString("codigo_Pais"))
                            
                             )
@@ -98,7 +98,7 @@ public class LTour {
             }
             return tour;
         } catch (Exception ex) {
-            Logger.getLogger(LAlojamiento.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LTour.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -109,9 +109,9 @@ public class LTour {
 
         parametros.add(new TParametro<>("p_nombre", tour.getnombre(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_cantidad_personas", tour.getcantidadPersonas(), Types.NUMERIC));
-        parametros.add(new TParametro<>("p_fecha_ingreso", tour.getfecha_ingreso(), Types.DATE));
+        parametros.add(new TParametro<>("p_fecha_tour", tour.getfecha_tour(), Types.DATE));
         parametros.add(new TParametro<>("p_precio", tour.getprecio(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_ubicacion", tour.getubicacion(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_descripcion", tour.getdescripcion(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_estado", tour.getestado(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_id_destino", tour.getdestino().getid_Destino(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
@@ -130,12 +130,12 @@ public class LTour {
     public int Actualizar(Tour tour) {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
-        parametros.add(new TParametro<>("p_id_tour", tour.getidAlojamiento(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_id_tour", tour.getidTour(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_nombre", tour.getnombre(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_cantidad_personas", tour.getcantidadPersonas(), Types.NUMERIC));
-        parametros.add(new TParametro<>("p_fecha_ingreso", tour.getfecha_ingreso(), Types.DATE));
+        parametros.add(new TParametro<>("p_fecha_tour", tour.getfecha_tour(), Types.DATE));
         parametros.add(new TParametro<>("p_precio", tour.getprecio(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_ubicacion", tour.getubicacion(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_descripcion", tour.getdescripcion(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_estado", tour.getestado(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_id_destino", tour.getdestino().getid_Destino(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));

@@ -13,11 +13,11 @@ private int id_tour;
     private boolean estado;
     private Destino destino;
  
-    public int getidAlojamiento() {
+    public int getidTour() {
         return id_tour;
     }
  
-    public void setidAlojamiento(int id_tour) {
+    public void setidTour(int id_tour) {
         this.id_tour = id_tour;
     }
  
@@ -37,11 +37,11 @@ private int id_tour;
         this.cantidad_personas = cantidadPersonas;
     }
  
-    public Date getfecha_ingreso(){
+    public Date getfecha_tour(){
         return fecha_tour;
     }
  
-    public void setfecha_ingreso(Date fecha_tour) {
+    public void setfecha_tour(Date fecha_tour) {
         this.fecha_tour = fecha_tour;
     }
  
@@ -53,11 +53,11 @@ private int id_tour;
         this.precio = precio;
     }
  
-    public String getubicacion() {
+    public String getdescripcion() {
         return descripcion;
     }
  
-    public void setubicacion(String descripcion) {
+    public void setdescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
  
