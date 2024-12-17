@@ -1,120 +1,116 @@
 package com.uca.producto.entities;
+
 import java.util.Date;
- 
+
 public class Alojamiento {
-    private int id_alojamiento;
+    private int idAlojamiento;
     private String nombre;
-    private int cantidad_personas;
-    private Date fecha_ingreso;
-    private Date fecha_salida;
+    private int cantidadPersonas;
+    private Date fechaIngreso;
+    private Date fechaSalida;
     private int precio;
     private String ubicacion;
     private boolean estado;
     private Destino destino;
- 
-    public int getidAlojamiento() {
-        return id_alojamiento;
+
+    public int getIdAlojamiento() {
+        return idAlojamiento;
     }
- 
-    public void setidAlojamiento(int id_alojamiento) {
-        this.id_alojamiento = id_alojamiento;
+
+    public void setIdAlojamiento(int idAlojamiento) {
+        this.idAlojamiento = idAlojamiento;
     }
- 
-    public String getnombre() {
+
+    public String getNombre() {
         return nombre;
     }
- 
-    public void setnombre(String nombre) {
+
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
- 
-    public int getcantidadPersonas(){
-        return cantidad_personas;
+
+    public int getCantidadPersonas() {
+        return cantidadPersonas;
     }
-   
-    public void setcantidadPersonas(int cantidadPersonas) {
-        this.cantidad_personas = cantidadPersonas;
+
+    public void setCantidadPersonas(int cantidadPersonas) {
+        this.cantidadPersonas = cantidadPersonas;
     }
- 
-    public Date getfecha_ingreso(){
-        return fecha_ingreso;
+
+    public Date getFechaIngreso() {
+        return fechaIngreso;
     }
- 
-    public void setfecha_ingreso(Date fecha_ingreso) {
-        this.fecha_ingreso = fecha_ingreso;
+
+    public void setFechaIngreso(Date fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
     }
-   
-    public Date getfecha_salida(){
-        return fecha_salida;
+
+    public Date getFechaSalida() {
+        return fechaSalida;
     }
- 
-    public void setfecha_salida(Date fecha_salida) {
-        this.fecha_salida = fecha_salida;
+
+    public void setFechaSalida(Date fechaSalida) {
+        this.fechaSalida = fechaSalida;
     }
- 
-    public int getprecio() {
+
+    public int getPrecio() {
         return precio;
     }
- 
-    public void setprecio(int precio) {
+
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
- 
-    public String getubicacion() {
+
+    public String getUbicacion() {
         return ubicacion;
     }
- 
-    public void setubicacion(String ubicacion) {
+
+    public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }
- 
-    public boolean getestado() {
+
+    public boolean isEstado() {
         return estado;
     }
- 
-    public void setestado(boolean estado) {
+
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    
-    public Destino getdestino() {
+
+    public Destino getDestino() {
         return destino;
     }
 
-    public void setdestino(Destino destino) {
+    public void setDestino(Destino destino) {
         this.destino = destino;
     }
 
-    public Alojamiento() {
+    public Alojamiento() {}
+
+    public Alojamiento(int idAlojamiento) {
+        this.idAlojamiento = idAlojamiento;
     }
 
-    public Alojamiento(int id_alojamiento) {
-        this.id_alojamiento = id_alojamiento;
-    }
-
-    public Alojamiento (int id_alojamiento, Destino destino){
-        this.id_alojamiento = id_alojamiento;
+    public Alojamiento(int idAlojamiento, Destino destino) {
+        this.idAlojamiento = idAlojamiento;
         this.destino = destino;
+    }
 
-    } 
-    
-    public Alojamiento (int id_alojamiento, String nombre, Destino destino){
-        this.id_alojamiento = id_alojamiento;
+    public Alojamiento(int idAlojamiento, String nombre, Destino destino) {
+        this.idAlojamiento = idAlojamiento;
         this.nombre = nombre;
         this.destino = destino;
-
     }
- 
-    public Alojamiento(int id_alojamiento, String nombre, int cantidadPersonas, Date fecha_ingreso, Date fecha_salida, int precio, String ubicacion,boolean estado, Destino destino) {
-        this.id_alojamiento = id_alojamiento;
+
+    public Alojamiento(int idAlojamiento, String nombre, int cantidadPersonas, Date fechaIngreso, Date fechaSalida, int precio, String ubicacion, boolean estado, Destino destino) {
+        this.idAlojamiento = idAlojamiento;
         this.nombre = nombre;
-        this.cantidad_personas = cantidadPersonas;
-        this.fecha_ingreso = fecha_ingreso;
-        this.fecha_salida = fecha_salida;
+        this.cantidadPersonas = cantidadPersonas;
+        this.fechaIngreso = fechaIngreso;
+        this.fechaSalida = fechaSalida;
         this.precio = precio;
         this.ubicacion = ubicacion;
         this.estado = estado;
         this.destino = destino;
-        
     }
-
 }

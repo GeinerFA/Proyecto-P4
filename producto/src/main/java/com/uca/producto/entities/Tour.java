@@ -3,99 +3,93 @@ package com.uca.producto.entities;
 import java.util.Date;
 
 public class Tour {
-    
-private int id_tour;
+    private int idTour;
     private String nombre;
-    private int cantidad_personas;
-    private Date fecha_tour;
+    private int cantidadPersonas;
+    private Date fechaTour;
     private int precio;
     private String descripcion;
     private boolean estado;
     private Destino destino;
- 
-    public int getidTour() {
-        return id_tour;
+
+    public int getIdTour() {
+        return idTour;
     }
- 
-    public void setidTour(int id_tour) {
-        this.id_tour = id_tour;
+
+    public void setIdTour(int idTour) {
+        this.idTour = idTour;
     }
- 
-    public String getnombre() {
+
+    public String getNombre() {
         return nombre;
     }
- 
-    public void setnombre(String nombre) {
+
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
- 
-    public int getcantidadPersonas(){
-        return cantidad_personas;
+
+    public int getCantidadPersonas() {
+        return cantidadPersonas;
     }
-   
-    public void setcantidadPersonas(int cantidadPersonas) {
-        this.cantidad_personas = cantidadPersonas;
+
+    public void setCantidadPersonas(int cantidadPersonas) {
+        this.cantidadPersonas = cantidadPersonas;
     }
- 
-    public Date getfecha_tour(){
-        return fecha_tour;
+
+    public Date getFechaTour() {
+        return fechaTour;
     }
- 
-    public void setfecha_tour(Date fecha_tour) {
-        this.fecha_tour = fecha_tour;
+
+    public void setFechaTour(Date fechaTour) {
+        this.fechaTour = fechaTour;
     }
- 
-    public int getprecio() {
+
+    public int getPrecio() {
         return precio;
     }
- 
-    public void setprecio(int precio) {
+
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
- 
-    public String getdescripcion() {
+
+    public String getDescripcion() {
         return descripcion;
     }
- 
-    public void setdescripcion(String descripcion) {
+
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
- 
-    public boolean getestado() {
+
+    public boolean isEstado() {
         return estado;
     }
- 
-    public void setestado(boolean estado) {
+
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
- 
-    public Tour() {
-    }
- 
-    public Tour(int id_tour) {
-        this.id_tour = id_tour;
-    }
- 
-    public Destino getdestino() {
+
+    public Destino getDestino() {
         return destino;
     }
 
-    public void setdestino(Destino destino) {
+    public void setDestino(Destino destino) {
         this.destino = destino;
-    }
- 
-   
- 
-    public Tour(int id_tour, String nombre, int cantidadPersonas, Date fecha_tour, int precio, String descripcion,boolean estado, Destino destino) {
-        this.id_tour = id_tour;
-        this.nombre = nombre;
-        this.cantidad_personas = cantidadPersonas;
-        this.fecha_tour = fecha_tour;
-        this.precio = precio;
-        this.descripcion = descripcion;
-        this.estado = estado;
-        this.destino = destino;
-        
     }
 
+    public Tour() {}
+
+    public Tour(int idTour) {
+        this.idTour = idTour;
+    }
+
+    public Tour(int idTour, String nombre, int cantidadPersonas, Date fechaTour, int precio, String descripcion,boolean estado, Destino destino) {
+        this.destino = destino;
+        this.idTour = idTour;
+        this.nombre = nombre;
+        this.cantidadPersonas = cantidadPersonas;
+        this.fechaTour = fechaTour;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.estado = estado;
+    }
 }

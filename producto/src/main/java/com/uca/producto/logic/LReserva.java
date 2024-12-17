@@ -30,7 +30,8 @@ public class LReserva {
                                 rs.getDate("fecha_regreso"),
                                 rs.getInt("precio"),
                                 rs.getBoolean("estado"),
-                                new Cliente(rs.getInt("id_cliente"),
+                                new Cliente(
+                                        rs.getInt("id_cliente"),
                                         rs.getString("nombre"),
                                         rs.getString("apellido"),
                                         rs.getString("pasaporte"),
@@ -38,7 +39,8 @@ public class LReserva {
                                         rs.getString("correo"),
                                         rs.getString("telefono"),
                                         rs.getBoolean("estado"))
-                                        ));
+                                )
+                        );
                     }
                 } catch (Exception ex) {
                     Logger.getLogger(LReserva.class.getName()).log(Level.SEVERE, null, ex);
@@ -69,15 +71,17 @@ public class LReserva {
                             rs.getDate("fecha_regreso"),
                             rs.getInt("precio"),
                             rs.getBoolean("estado"),
-                            new Cliente(rs.getInt("id_cliente"),
+                            new Cliente(
+                                    rs.getInt("id_cliente"),
                                     rs.getString("nombre"),
                                     rs.getString("apellido"),
                                     rs.getString("pasaporte"),
                                     rs.getString("nacionalidad"),
                                     rs.getString("correo"),
                                     rs.getString("telefono"),
-                                    rs.getBoolean("estado"))
-                                    );
+                                    rs.getBoolean("estado")
+                            )
+                        );
                     }
                 }
             }
@@ -91,20 +95,20 @@ public class LReserva {
     public int Guardar(Reserva reserva) {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
-        parametros.add(new TParametro<>("p_fecha_ida", reserva.getFecha_ida(), Types.DATE));
-        parametros.add(new TParametro<>("p_fecha_regreso", reserva.getFecha_regreso(), Types.DATE));
+        parametros.add(new TParametro<>("p_fecha_ida", reserva.getFechaIda(), Types.DATE));
+        parametros.add(new TParametro<>("p_fecha_regreso", reserva.getFechaRegreso(), Types.DATE));
         parametros.add(new TParametro<>("p_precio", reserva.getPrecio(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_estado", reserva.getEstado() ? 1 : 0, Types.VARCHAR));
+        parametros.add(new TParametro<>("p_estado", reserva.isEstado() ? 1 : 0, Types.VARCHAR));
         parametros.add(new TParametro<>("p_id_cliente", reserva.getCliente().getIdCliente(), Types.NUMERIC));
 
         ArrayList<Object[]> valores = new ArrayList<>();
-        reserva.getReserva().forEach((res) -> {
+        reserva.getLineas().forEach((res) -> {
             valores.add(new Object[]{
                     0,
-                    res.getAlojamiento().getidAlojamiento(),                    
+                    res.getAlojamiento().getIdAlojamiento(),
                     0,
-                    res.getAlojamiento().getdestino().getid_Destino(),
-                    res.getTour().getidTour()
+                    res.getAlojamiento().getDestino().getIdDestino(),
+                    res.getTour().getIdTour()
             });
         });
         parametros.add(new TParametro<>("p_reservas", "PROYECTO.ARR_RESERVA_DESTINO", "PROYECTO.T_RESERVA_DESTINO", valores, Types.ARRAY));
@@ -121,16 +125,14 @@ public class LReserva {
         }
     }
 
-
-
     public int Actualizar(Reserva reserva) {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
-        parametros.add(new TParametro<>("p_id_reserva", reserva.getidReserva(), Types.NUMERIC));
-        parametros.add(new TParametro<>("p_fecha_ida", reserva.getFecha_ida(), Types.DATE));
-        parametros.add(new TParametro<>("p_fecha_regreso", reserva.getFecha_regreso(), Types.DATE));
+        parametros.add(new TParametro<>("p_id_reserva", reserva.getIdReserva(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_fecha_ida", reserva.getFechaIda(), Types.DATE));
+        parametros.add(new TParametro<>("p_fecha_regreso", reserva.getFechaRegreso(), Types.DATE));
         parametros.add(new TParametro<>("p_precio", reserva.getPrecio(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_estado", reserva.getEstado() ? 1 : 0, Types.VARCHAR));
+        parametros.add(new TParametro<>("p_estado", reserva.isEstado() ? 1 : 0, Types.VARCHAR));
         parametros.add(new TParametro<>("p_id_cliente", reserva.getCliente().getIdCliente(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 

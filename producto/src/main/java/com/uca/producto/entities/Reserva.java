@@ -4,40 +4,39 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Reserva {
-    private int id_reserva;
-    private Date fecha_ida;
-    private Date fecha_regreso;
+    private int idReserva;
+    private Date fechaIda;
+    private Date fechaRegreso;
     private int precio;
-    private boolean estado; 
+    private boolean estado;
     private Cliente cliente;
-    private ArrayList<ReservaDestino> reserva;
+    private ArrayList<ReservaDestino> lineas;
 
-
-    public int getidReserva() {
-        return id_reserva;
+    public int getIdReserva() {
+        return idReserva;
     }
 
-    public void setid_reserva(int id_reserva) {
-        this.id_reserva = id_reserva;
+    public void setIdReserva(int idReserva) {
+        this.idReserva = idReserva;
     }
 
-    public Date getFecha_ida() {
-        return fecha_ida;
+    public Date getFechaIda() {
+        return fechaIda;
     }
 
-    public void setFecha_ida(Date fecha_ida) {
-        this.fecha_ida = fecha_ida;
+    public void setFechaIda(Date fechaIda) {
+        this.fechaIda = fechaIda;
     }
 
-    public Date getFecha_regreso() {
-        return fecha_regreso;
+    public Date getFechaRegreso() {
+        return fechaRegreso;
     }
 
-    public void setFecha_regreso(Date fecha_regreso) {
-        this.fecha_regreso = fecha_regreso;
+    public void setFechaRegreso(Date fechaRegreso) {
+        this.fechaRegreso = fechaRegreso;
     }
 
-    public double getPrecio() {
+    public int getPrecio() {
         return precio;
     }
 
@@ -45,27 +44,12 @@ public class Reserva {
         this.precio = precio;
     }
 
-    public boolean getEstado() {
+    public boolean isEstado() {
         return estado;
     }
 
     public void setEstado(boolean estado) {
         this.estado = estado;
-    }
-
-    public ArrayList<ReservaDestino> getReserva(){
-        return reserva;
-    }
-
-    public void setReserva (ArrayList<ReservaDestino> reserva){
-        this.reserva = reserva;
-    }
-
-    public Reserva() {
-    }
- 
-    public Reserva(int id_reserva) {
-        this.id_reserva = id_reserva;
     }
 
     public Cliente getCliente() {
@@ -76,25 +60,36 @@ public class Reserva {
         this.cliente = cliente;
     }
 
-    
-
-    public Reserva(int id_reserva, Date fecha_ida, Date fecha_regreso, int precio, boolean estado, Cliente cliente) {
-        this.id_reserva = id_reserva;
-        this.fecha_ida = fecha_ida;
-        this.fecha_regreso = fecha_regreso;
-        this.precio = precio;
-        this.estado = estado;
-        this.cliente = cliente;
-        
+    public ArrayList<ReservaDestino> getLineas() {
+        return lineas;
     }
 
-    public Reserva(int id_reserva, Date fecha_ida, Date fecha_regreso, int precio, boolean estado, Cliente cliente, ArrayList<ReservaDestino> reserva) {
-        this.id_reserva = id_reserva;
-        this.fecha_ida = fecha_ida;
-        this.fecha_regreso = fecha_regreso;
+    public void setLineas(ArrayList<ReservaDestino> lineas) {
+        this.lineas = lineas;
+    }
+
+    public Reserva() { }
+
+    public Reserva(int idReserva) {
+        this.idReserva = idReserva;
+    }
+
+    public Reserva(int idReserva, Date fechaIda, Date fechaRegreso, int precio, boolean estado, Cliente cliente) {
+        this.idReserva = idReserva;
+        this.fechaIda = fechaIda;
+        this.fechaRegreso = fechaRegreso;
         this.precio = precio;
         this.estado = estado;
         this.cliente = cliente;
-        this.reserva = reserva;
+    }
+
+    public Reserva(int idReserva, Date fechaIda, Date fechaRegreso, int precio, boolean estado, Cliente cliente, ArrayList<ReservaDestino> lineas) {
+        this.idReserva = idReserva;
+        this.fechaIda = fechaIda;
+        this.fechaRegreso = fechaRegreso;
+        this.precio = precio;
+        this.estado = estado;
+        this.cliente = cliente;
+        this.lineas = lineas;
     }
 }

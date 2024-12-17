@@ -47,10 +47,6 @@ public class LAlojamiento {
                             )
                         );
                     }
-                } catch (Exception ex) {
-                    Logger.getLogger(LAlojamiento.class.getName()).log(Level.SEVERE, null, ex);
-                    return null;
-
                 }
             }
             return alojamientos;
@@ -90,11 +86,9 @@ public class LAlojamiento {
                                             rs.getInt("id_Pais"),
                                             rs.getString("nombre_Pais"),
                                             rs.getString("codigo_Pais")
-
                                     )
                             )
                         );
-
                     }
                 }
             }
@@ -109,14 +103,14 @@ public class LAlojamiento {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
 
-        parametros.add(new TParametro<>("p_nombre", alojamiento.getnombre(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_cantidad_personas", alojamiento.getcantidadPersonas(), Types.NUMERIC));
-        parametros.add(new TParametro<>("p_fecha_ingreso", alojamiento.getfecha_ingreso(), Types.DATE));
-        parametros.add(new TParametro<>("p_fecha_salida", alojamiento.getfecha_salida(), Types.DATE));
-        parametros.add(new TParametro<>("p_precio", alojamiento.getprecio(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_ubicacion", alojamiento.getubicacion(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_estado", alojamiento.getestado(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_id_destino", alojamiento.getdestino().getid_Destino(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_nombre", alojamiento.getNombre(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_cantidad_personas", alojamiento.getCantidadPersonas(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_fecha_ingreso", alojamiento.getFechaIngreso(), Types.DATE));
+        parametros.add(new TParametro<>("p_fecha_salida", alojamiento.getFechaSalida(), Types.DATE));
+        parametros.add(new TParametro<>("p_precio", alojamiento.getPrecio(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_ubicacion", alojamiento.getUbicacion(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_estado", alojamiento.isEstado(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_id_destino", alojamiento.getDestino().getIdDestino(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
@@ -133,15 +127,15 @@ public class LAlojamiento {
     public int Actualizar(Alojamiento alojamiento) {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
-        parametros.add(new TParametro<>("p_id_alojamiento", alojamiento.getidAlojamiento(), Types.NUMERIC));
-        parametros.add(new TParametro<>("p_nombre", alojamiento.getnombre(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_cantidad_personas", alojamiento.getcantidadPersonas(), Types.NUMERIC));
-        parametros.add(new TParametro<>("p_fecha_ingreso", alojamiento.getfecha_ingreso(), Types.DATE));
-        parametros.add(new TParametro<>("p_fecha_salida", alojamiento.getfecha_salida(), Types.DATE));
-        parametros.add(new TParametro<>("p_precio", alojamiento.getprecio(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_ubicacion", alojamiento.getubicacion(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_estado", alojamiento.getestado(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_id_destino", alojamiento.getdestino().getid_Destino(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_id_alojamiento", alojamiento.getIdAlojamiento(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_nombre", alojamiento.getNombre(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_cantidad_personas", alojamiento.getCantidadPersonas(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_fecha_ingreso", alojamiento.getFechaIngreso(), Types.DATE));
+        parametros.add(new TParametro<>("p_fecha_salida", alojamiento.getFechaSalida(), Types.DATE));
+        parametros.add(new TParametro<>("p_precio", alojamiento.getPrecio(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_ubicacion", alojamiento.getUbicacion(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_estado", alojamiento.isEstado(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_id_destino", alojamiento.getDestino().getIdDestino(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {

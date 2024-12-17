@@ -1,69 +1,67 @@
-
 package com.uca.producto.entities;
 
 public class Destino {
-    private int id_destino;
+    private int idDestino;
     private String nombre;
     private String descripcion;
     private boolean estado;
     private Pais pais;
 
-    public int getid_Destino() {
-        return id_destino;
+    public int getIdDestino() {
+        return idDestino;
     }
 
-    public void setid_Destino(int id_destino) {
-        this.id_destino = id_destino;
+    public void setIdDestino(int idDestino) {
+        this.idDestino = idDestino;
     }
 
-    public String getnombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setnombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getdescripcion() {
+    public String getDescripcion() {
         return descripcion;
     }
 
-    public String setdescripcion(String descripcion) {
-        return this.descripcion = descripcion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public boolean getestado() {
+    public boolean isEstado() {
         return estado;
     }
 
-    public void setestado(boolean estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 
-    public Destino() {
-    }
-
-    public Destino(int id_destino) {
-        this.id_destino = id_destino;
-    }
-
-    public Pais getpais() {
+    public Pais getPais() {
         return pais;
     }
 
-    public void setpais(Pais pais) {
+    public void setPais(Pais pais) {
         this.pais = pais;
     }
 
-    public Destino(int id_destino, String nombre, String descripcion, boolean estado , Pais pais) {
-        this.id_destino = id_destino;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.estado = estado;
-        this.pais = pais;
+    public Destino() {}
+
+    public Destino(int idDestino) {
+        this.idDestino = idDestino;
     }
 
     public Destino(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Destino(int idDestino, String nombre, String descripcion, boolean estado, Pais pais) {
+        this.idDestino = idDestino;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.estado = estado;
+        this.pais = pais;
     }
 }
