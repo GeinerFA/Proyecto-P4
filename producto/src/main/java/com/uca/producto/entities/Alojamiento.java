@@ -105,4 +105,10 @@ public class Alojamiento {
         this.destino = destino;
         
     }
+
+    public Alojamiento (String nombre, Destino destino){
+        this.nombre = nombre;
+        this.destino = destino;
+
+    }
 }

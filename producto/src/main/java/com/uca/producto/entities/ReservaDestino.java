@@ -2,52 +2,45 @@ package com.uca.producto.entities;
 
 public class ReservaDestino {
     
-    private int id_reserva_destino;
+    private int idReservaDestino;
     private Alojamiento alojamiento;
-    private Reserva reserva;
+    private Destino destino;
     
 
-    public int getid_reserva_destino() {
-        return id_reserva_destino;
+    public int getIdReservaDestino() {
+        return idReservaDestino;
     }
  
-    public void setid_reserva_destino(int id_reserva_destino) {
-        this.id_reserva_destino = id_reserva_destino;
+    public void setIdReservaDestino(int idReservaDestino) {
+        this.idReservaDestino = idReservaDestino;
     }
 
 
-    public Alojamiento getalojamiento() {
+    public Alojamiento getAlojamiento() {
         return alojamiento;
     }
 
-    public void setalojamiento(Alojamiento alojamiento) {
+    public void setAlojamiento(Alojamiento alojamiento) {
         this.alojamiento = alojamiento;
     }
 
-    public Reserva getreserva() {
-        return reserva;
+    public Destino getDestino() {
+        return destino;
     }
 
-    public void setreserva(Reserva reserva) {
-        this.reserva = reserva;
+    public void setDestino(Destino destino) {
+        this.destino = destino;
     }
-
-    
 
     public ReservaDestino() {
     }
  
-    public ReservaDestino(int id_reserva_destino) {
-        this.id_reserva_destino = id_reserva_destino;
+    public ReservaDestino(int idReservaDestino) {
+        this.idReservaDestino = idReservaDestino;
     }
 
-    public ReservaDestino(int id_reserva_destino, Alojamiento alojamiento, Reserva reserva ) {
-        
+    public ReservaDestino(int idReservaDestino, Alojamiento alojamiento) {        
         this.alojamiento = alojamiento;
-        this.reserva = reserva;       
     }
-
-
-
 
 }

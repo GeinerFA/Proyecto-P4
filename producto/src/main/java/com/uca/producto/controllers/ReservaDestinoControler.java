@@ -11,12 +11,12 @@ import com.uca.producto.entities.ReservaDestino;
 import com.uca.producto.logic.LReservaDestino;
 
 @RestController
-@RequestMapping("reserva_destino")
+@RequestMapping("reserva-destino")
 @CrossOrigin(origins = "*")
 public class ReservaDestinoControler {
     
      @GetMapping({"{id}"})
     public @ResponseBody ReservaDestino Consultar(@PathVariable("id") int id) {
-        return new LReservaDestino().Consultar(id);
+        return new LReservaDestino().Listar(id);
     }
 }

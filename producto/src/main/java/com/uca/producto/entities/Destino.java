@@ -62,4 +62,8 @@ public class Destino {
         this.estado = estado;
         this.pais = pais;
     }
+
+    public Destino(String nombre) {
+        this.nombre = nombre;
+    }
 }
