@@ -75,14 +75,7 @@ public class Alojamiento {
     public void setestado(boolean estado) {
         this.estado = estado;
     }
- 
-    public Alojamiento() {
-    }
- 
-    public Alojamiento(int id_alojamiento) {
-        this.id_alojamiento = id_alojamiento;
-    }
- 
+    
     public Destino getdestino() {
         return destino;
     }
@@ -90,8 +83,26 @@ public class Alojamiento {
     public void setdestino(Destino destino) {
         this.destino = destino;
     }
- 
-   
+
+    public Alojamiento() {
+    }
+
+    public Alojamiento(int id_alojamiento) {
+        this.id_alojamiento = id_alojamiento;
+    }
+
+    public Alojamiento (int id_alojamiento, Destino destino){
+        this.id_alojamiento = id_alojamiento;
+        this.destino = destino;
+
+    } 
+    
+    public Alojamiento (int id_alojamiento, String nombre, Destino destino){
+        this.id_alojamiento = id_alojamiento;
+        this.nombre = nombre;
+        this.destino = destino;
+
+    }
  
     public Alojamiento(int id_alojamiento, String nombre, int cantidadPersonas, Date fecha_ingreso, Date fecha_salida, int precio, String ubicacion,boolean estado, Destino destino) {
         this.id_alojamiento = id_alojamiento;
@@ -106,9 +117,4 @@ public class Alojamiento {
         
     }
 
-    public Alojamiento (String nombre, Destino destino){
-        this.nombre = nombre;
-        this.destino = destino;
-
-    }
 }

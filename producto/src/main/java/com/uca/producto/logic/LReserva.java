@@ -96,11 +96,23 @@ public class LReserva {
         parametros.add(new TParametro<>("p_precio", reserva.getPrecio(), Types.VARCHAR));
         parametros.add(new TParametro<>("p_estado", reserva.getEstado() ? 1 : 0, Types.VARCHAR));
         parametros.add(new TParametro<>("p_id_cliente", reserva.getCliente().getIdCliente(), Types.NUMERIC));
+
+        ArrayList<Object[]> valores = new ArrayList<>();
+        reserva.getReserva().forEach((res) -> {
+            valores.add(new Object[]{
+                    0,
+                    res.getAlojamiento().getidAlojamiento(),                    
+                    0,
+                    res.getAlojamiento().getdestino().getid_Destino(),
+                    res.getTour().getidTour()
+            });
+        });
+        parametros.add(new TParametro<>("p_reservas", "PROYECTO.ARR_RESERVA_DESTINO", "PROYECTO.T_RESERVA_DESTINO", valores, Types.ARRAY));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
             if (cm.Connect()) {
-                return cm.Execute("proyecto.operaciones.sp_op_guardar_reserva(?,?,?,?,?,?)", parametros);
+                return cm.Execute("proyecto.operaciones.sp_op_guardar_reserva(?,?,?,?,?,?,?)", parametros);
             }
             return 0;
         } catch (Exception e) {

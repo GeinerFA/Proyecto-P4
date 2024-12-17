@@ -28,6 +28,7 @@ public class LReservaDestino {
                         reservadestino = new ReservaDestino(
                                 rs.getInt("id_reserva_destino"),
                                 new Alojamiento(
+                                    0,
                                         rs.getString("nombre_alojamiento"),
                                         new Destino(
                                                 rs.getString("nombre_destino"))));

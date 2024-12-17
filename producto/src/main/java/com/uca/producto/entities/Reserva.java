@@ -1,5 +1,6 @@
 package com.uca.producto.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Reserva {
@@ -9,6 +10,7 @@ public class Reserva {
     private int precio;
     private boolean estado; 
     private Cliente cliente;
+    private ArrayList<ReservaDestino> reserva;
 
 
     public int getidReserva() {
@@ -51,6 +53,14 @@ public class Reserva {
         this.estado = estado;
     }
 
+    public ArrayList<ReservaDestino> getReserva(){
+        return reserva;
+    }
+
+    public void setReserva (ArrayList<ReservaDestino> reserva){
+        this.reserva = reserva;
+    }
+
     public Reserva() {
     }
  
@@ -66,6 +76,8 @@ public class Reserva {
         this.cliente = cliente;
     }
 
+    
+
     public Reserva(int id_reserva, Date fecha_ida, Date fecha_regreso, int precio, boolean estado, Cliente cliente) {
         this.id_reserva = id_reserva;
         this.fecha_ida = fecha_ida;
@@ -73,5 +85,16 @@ public class Reserva {
         this.precio = precio;
         this.estado = estado;
         this.cliente = cliente;
+        
+    }
+
+    public Reserva(int id_reserva, Date fecha_ida, Date fecha_regreso, int precio, boolean estado, Cliente cliente, ArrayList<ReservaDestino> reserva) {
+        this.id_reserva = id_reserva;
+        this.fecha_ida = fecha_ida;
+        this.fecha_regreso = fecha_regreso;
+        this.precio = precio;
+        this.estado = estado;
+        this.cliente = cliente;
+        this.reserva = reserva;
     }
 }
