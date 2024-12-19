@@ -18,7 +18,7 @@ import com.uca.producto.logic.LReserva;
 @RestController
 @RequestMapping("reservas")
 @CrossOrigin(origins = "*")
-public class ReservaController {
+public class   ReservaController {
     @GetMapping
     public @ResponseBody List<Reserva> Listar() {
         return new LReserva().Listar();

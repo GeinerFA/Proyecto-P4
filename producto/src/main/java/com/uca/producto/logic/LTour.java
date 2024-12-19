@@ -1,20 +1,20 @@
 package com.uca.producto.logic;
 
+import com.uca.producto.db.ConnectionManager;
+import com.uca.producto.db.TParametro;
+import com.uca.producto.entities.Destino;
+import com.uca.producto.entities.Pais;
+import com.uca.producto.entities.Tour;
+
 import java.sql.ResultSet;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.uca.producto.db.ConnectionManager;
-import com.uca.producto.db.TParametro;
-import com.uca.producto.entities.Tour;
-import com.uca.producto.entities.Destino;
-import com.uca.producto.entities.Pais;
-
 public class LTour {
-    
-     public ArrayList<Tour> Listar() {
+
+    public ArrayList<Tour> Listar() {
         ArrayList<Tour> tours = new ArrayList<>();
 
         // Definir y cargar los parámetros.
@@ -33,18 +33,17 @@ public class LTour {
                                 rs.getInt("precio"),
                                 rs.getString("descripcion"),
                                 rs.getBoolean("estado"),
-                                 new Destino(
-                                    rs.getInt("id_destino"),
-                                    rs.getString("nombre_destino"),
-                                    rs.getString("descripcion_destino"),
-                                    rs.getBoolean("estado_destino"),
-                                new Pais(
-                                        rs.getInt("id_Pais"),
-                                        rs.getString("nombre_pais"),
-                                        rs.getString("codigo_Pais"))
-                               
-                                )
-                            )
+                                new Destino(
+                                        rs.getInt("id_destino"),
+                                        rs.getString("nombre_destino"),
+                                        rs.getString("descripcion_destino"),
+                                        rs.getBoolean("estado_destino"),
+                                        new Pais(
+                                                rs.getInt("id_Pais"),
+                                                rs.getString("nombre_pais"),
+                                                rs.getString("codigo_Pais"))
+
+                                ))
                         );
                     }
                 } catch (Exception ex) {
@@ -73,26 +72,24 @@ public class LTour {
                     if (rs.next()) {
                         // Cargamos la información del pais
                         tour = new Tour(
-                            rs.getInt("id_tour"),
-                            rs.getString("nombre"),
-                            rs.getInt("cantidad_Personas"),
-                            rs.getDate("fecha_tour"),
-                            rs.getInt("precio"),
-                            rs.getString("descripcion"),
-                            rs.getBoolean("estado"),
-                             new Destino(
-                                rs.getInt("id_destino"),
-                                rs.getString("nombre_destino"),
-                                rs.getString("descripcion_destino"),
-                                rs.getBoolean("estado_destino"),
-                            new Pais(
-                                    rs.getInt("id_Pais"),
-                                    rs.getString("nombre_pais"),
-                                    rs.getString("codigo_Pais"))
-                           
-                            )
-                        );
+                                rs.getInt("id_tour"),
+                                rs.getString("nombre"),
+                                rs.getInt("cantidad_Personas"),
+                                rs.getDate("fecha_tour"),
+                                rs.getInt("precio"),
+                                rs.getString("descripcion"),
+                                rs.getBoolean("estado"),
+                                new Destino(
+                                        rs.getInt("id_destino"),
+                                        rs.getString("nombre_destino"),
+                                        rs.getString("descripcion_destino"),
+                                        rs.getBoolean("estado_destino"),
+                                        new Pais(
+                                                rs.getInt("id_Pais"),
+                                                rs.getString("nombre_pais"),
+                                                rs.getString("codigo_Pais"))
 
+                                ));
                     }
                 }
             }
@@ -107,13 +104,13 @@ public class LTour {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
 
-        parametros.add(new TParametro<>("p_nombre", tour.getnombre(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_cantidad_personas", tour.getcantidadPersonas(), Types.NUMERIC));
-        parametros.add(new TParametro<>("p_fecha_tour", tour.getfecha_tour(), Types.DATE));
-        parametros.add(new TParametro<>("p_precio", tour.getprecio(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_descripcion", tour.getdescripcion(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_estado", tour.getestado(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_id_destino", tour.getdestino().getid_Destino(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_nombre", tour.getNombre(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_cantidad_personas", tour.getCantidadPersonas(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_fecha_tour", tour.getFechaTour(), Types.DATE));
+        parametros.add(new TParametro<>("p_precio", tour.getPrecio(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_descripcion", tour.getDescripcion(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_estado", tour.isEstado(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_id_destino", tour.getDestino().getIdDestino(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
@@ -130,14 +127,14 @@ public class LTour {
     public int Actualizar(Tour tour) {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
-        parametros.add(new TParametro<>("p_id_tour", tour.getidTour(), Types.NUMERIC));
-        parametros.add(new TParametro<>("p_nombre", tour.getnombre(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_cantidad_personas", tour.getcantidadPersonas(), Types.NUMERIC));
-        parametros.add(new TParametro<>("p_fecha_tour", tour.getfecha_tour(), Types.DATE));
-        parametros.add(new TParametro<>("p_precio", tour.getprecio(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_descripcion", tour.getdescripcion(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_estado", tour.getestado(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_id_destino", tour.getdestino().getid_Destino(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_id_tour", tour.getIdTour(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_nombre", tour.getNombre(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_cantidad_personas", tour.getCantidadPersonas(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_fecha_tour", tour.getFechaTour(), Types.DATE));
+        parametros.add(new TParametro<>("p_precio", tour.getPrecio(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_descripcion", tour.getDescripcion(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_estado", tour.isEstado(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_id_destino", tour.getDestino().getIdDestino(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {

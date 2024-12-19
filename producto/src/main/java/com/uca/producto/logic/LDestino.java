@@ -31,14 +31,10 @@ public class LDestino {
                                 new Pais(
                                     rs.getInt("id_Pais"),
                                     rs.getString("nombre_pais"),
-                                    rs.getString("codigo_Pais"))
-
+                                    rs.getString("codigo_Pais")
+                                )
                         ));
                     }
-                } catch (Exception ex) {
-                    Logger.getLogger(LDestino.class.getName()).log(Level.SEVERE, null, ex);
-                    return null;
-
                 }
             }
             return destinos;
@@ -68,10 +64,9 @@ public class LDestino {
                                 new Pais(
                                     rs.getInt("id_Pais"),
                                     rs.getString("nombre_pais"),
-                                    rs.getString("codigo_Pais"))
-
+                                    rs.getString("codigo_Pais")
+                                )
                         );
-
                     }
                 }
             }
@@ -85,10 +80,10 @@ public class LDestino {
     public int Guardar(Destino destino) {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
-        parametros.add(new TParametro<>("p_nombre", destino.getnombre(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_descripcion", destino.getdescripcion(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_estado", destino.getestado() ? 1 : 0, Types.INTEGER));
-        parametros.add(new TParametro<>("p_id_pais", destino.getpais().getIdPais(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_nombre", destino.getNombre(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_descripcion", destino.getDescripcion(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_estado", destino.isEstado() ? 1 : 0, Types.INTEGER));
+        parametros.add(new TParametro<>("p_id_pais", destino.getPais().getIdPais(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
@@ -105,11 +100,11 @@ public class LDestino {
     public int Actualizar(Destino destino) {
         // Definir y cargar los parámetros.
         ArrayList<TParametro<?>> parametros = new ArrayList<>();
-        parametros.add(new TParametro<>("p_id_destino", destino.getid_Destino(), Types.NUMERIC));
-        parametros.add(new TParametro<>("p_nombre", destino.getnombre(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_descripcion", destino.getdescripcion(), Types.VARCHAR));
-        parametros.add(new TParametro<>("p_estado", destino.getestado() ? 1 : 0, Types.INTEGER));
-        parametros.add(new TParametro<>("p_id_pais", destino.getpais().getIdPais(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_id_destino", destino.getIdDestino(), Types.NUMERIC));
+        parametros.add(new TParametro<>("p_nombre", destino.getNombre(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_descripcion", destino.getDescripcion(), Types.VARCHAR));
+        parametros.add(new TParametro<>("p_estado", destino.isEstado() ? 1 : 0, Types.INTEGER));
+        parametros.add(new TParametro<>("p_id_pais", destino.getPais().getIdPais(), Types.NUMERIC));
         parametros.add(new TParametro<>("p_respuesta", null, Types.INTEGER, true));
 
         try (ConnectionManager cm = new ConnectionManager()) {
